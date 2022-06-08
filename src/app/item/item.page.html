@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Item</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <ion-item *ngFor="let input of global.row.body">
+    <ng-container *ngIf="input.val != null">
+      <ion-input type="text" [(ngModel)]="input.val"></ion-input>
+    </ng-container>
+  </ion-item> -->
+  <ng-container *ngFor="let input of global.selectedUnit.features; let i = index">
+    <ng-container *ngIf="global.row.body[i]">
+
+      <ng-container *ngIf="input.type == 'text'">
+        <ion-item>
+          <ion-label position="stacked">{{ input.label }}</ion-label>
+          <ion-input placeholder="99" [(ngModel)]="global.row.body[i].val"></ion-input>
+        </ion-item>
+      </ng-container>
+
+      <ng-container *ngIf="input.type == 'select'">
+        <ion-item lines="none">
+          <ion-label position="stacked">{{ input.label }}</ion-label>
+          <ion-select placeholder="select anything" [(ngModel)]="global.row.body[i].val">
+            <ion-select-option *ngFor="let option of global.row.body[i].array" [value]="option.name">
+              {{option.name}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ng-container>
+
+      <ng-container *ngIf="input.type == 'date'">
+        <ion-item lines="none">
+          <ion-label position="stacked">{{ input.label }}</ion-label>
+          <ion-datetime [(ngModel)]="global.row.body[i].val"></ion-datetime>
+        </ion-item>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</ion-content>

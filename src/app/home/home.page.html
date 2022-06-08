@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{global.data.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label contenteditable="">
+        <ion-input [(ngModel)]="global.selectedUnit.name">
+        </ion-input>
+      </ion-label>
+    </ion-list-header>
+    <ng-container *ngFor="let item of global.selectedUnitItems">
+      <ion-card style="padding: 0px 5px 10px 0px;" (click)="openEdit(item)">
+        <ng-container *ngFor="let result of item.body; let i = index">
+          <ion-item lines="none" *ngIf="result.val != null">
+            <h4>{{ global.selectedUnit.features[i].label }}: <span style="font-weight: 200">{{result.val}}</span></h4>
+          </ion-item>
+        </ng-container>
+      </ion-card>
+    </ng-container>
+    <ng-container *ngIf="global.selectedUnitItems.length == 0">
+      <ion-item lines="none">
+        <ion-label>No data entered</ion-label>
+      </ion-item>
+    </ng-container>
+  </ion-list>
+</ion-content>

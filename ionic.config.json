@@ -1,0 +1,7 @@
+{
+  "name": "westmenlo",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

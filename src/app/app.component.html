@@ -1,0 +1,26 @@
+<ion-app>
+  <ion-menu side="start" content-id="main-content">
+    <ion-header>
+      <ion-toolbar color="warning">
+        <ion-title>{{global.data.name}}</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-list-header>
+          <ion-label>
+            Units
+          </ion-label>
+        </ion-list-header>
+        <ng-container *ngFor="let unit of global.data.units">
+          <ion-item (click)="selectUnit(unit)" [ngClass]="unit._id == global.selectedUnit._id ? 'selected' : ''" lines="none">
+            {{unit.name}}
+          </ion-item>
+        </ng-container>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <ion-router-outlet id="main-content">
+  </ion-router-outlet>
+</ion-app>
